@@ -1,7 +1,16 @@
 services:
+  selenium:
+    image: seleniarm/standalone-chromium:latest
+    container_name: k8-machine_seleniarm-container
+    shm_size: 2gb 
+    ports:
+      - 4444:4444
+      - 7900:7900
+
   python:
     build: .
-    container_name: k8-machine-container
+    image: k8-machine:1.0
+    container_name: k8-machine_python-container
     volumes:
       - .:/workspace
     ports:
